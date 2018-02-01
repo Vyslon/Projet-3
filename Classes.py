@@ -16,4 +16,10 @@ class Level:
         pass
 
 class Character:
-    pass
+    def __init__(self):
+        #initiallize attributes
+        pass
+
+    def move(self, choice):
+        #Moving character in the desired direction (if possible)
+
