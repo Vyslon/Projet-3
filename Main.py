@@ -1,6 +1,6 @@
 #import pygame and pygame constants
-#import constants.py & classes.py
-
+from Constants import *
+import Classes
 
 program_loop = 1
 menu_loop = 1
