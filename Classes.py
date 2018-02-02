@@ -1,11 +1,15 @@
 import Main
 
 class Level:
-    def __init__(self):
-        #initialize attributes
+    def __init__(self, file):
+        """
+        Initialize attributes of the class
+        """
+        self.lvlConfigFile = file
+        self.structure = 0
         pass
 
-    def generator(self, file):
+    def generator(self):
         #Generate structure
         #Place objects has random locations
         pass
