@@ -1,4 +1,4 @@
-import Main
+#import pygame
 
 class Level:
     def __init__(self, file):
@@ -7,12 +7,20 @@ class Level:
         """
         self.lvlConfigFile = file
         self.structure = 0
-        pass
+
 
     def generator(self):
-        #Generate structure
-        #Place objects has random locations
-        pass
+        """Generate structure and place items has random locations"""
+        with open(self.lvlConfigFile, "r") as file:
+            level_structure = []
+            for line in file:
+                line_level = []
+                for character in line:
+                    if character != '\n':
+                        line_level.append(character)
+
+                level_structure.append(line_level)
+            self.structure = level_structure
 
     def display(self, window):
         #Display labyrinth
@@ -26,4 +34,5 @@ class Character:
 
     def move(self, choice):
         #Moving character in the desired direction (if possible)
+        pass
 

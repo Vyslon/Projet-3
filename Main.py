@@ -1,6 +1,6 @@
 #import pygame and pygame constants
 from Constants import *
-import Classes
+from Classes import *
 
 program_loop = 1
 menu_loop = 1
@@ -10,6 +10,7 @@ while program_loop:
     #Display menu
     #Refresh screen
     while menu_loop:
+        pass
     #Limit the number of frames per second so that the program will not take too much ressources
     #For every event
     #   If quit icon
@@ -25,6 +26,8 @@ while program_loop:
     #   display level
     #   Instantiate the character
     while game_loop:
+        pass
+    
     #Limit the number of frames per second so that the program will not take too much ressources
     #For every event
     #   If quit icon
