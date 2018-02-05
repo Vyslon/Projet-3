@@ -1,4 +1,5 @@
-#import pygame and pygame constants
+import pygame
+from pygame.locals import *
 from Constants import *
 from Classes import *
 
@@ -27,7 +28,7 @@ while program_loop:
     #   Instantiate the character
     while game_loop:
         pass
-    
+
     #Limit the number of frames per second so that the program will not take too much ressources
     #For every event
     #   If quit icon
