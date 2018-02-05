@@ -24,8 +24,22 @@ class Level:
             self.structure = level_structure
 
     def display(self, window):
-        #Display labyrinth
         #Display items
+        startingpointimage = pygame.image.load("start.png")
+        endingpointimage = pygame.image.load("end.png")
+        wallimage = pygame.image.load("wall.png")
+        y, x = 0, 0
+        for line in self.structure:
+            for character in line:
+                if character == 's':
+                    window.blit(startingpointimage, (x * 30, y * 30))
+                if character == 'w':
+                    window.blit(endingpointimage,(x * 30,y * 30))
+                if character == 'e':
+                    window.blit(wallimage, (x * 30,y * 30))
+                x += 1
+            y += 1
+
         pass
 
 class Character:

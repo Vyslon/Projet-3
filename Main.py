@@ -4,8 +4,11 @@ from Constants import *
 from Classes import *
 
 program_loop = 1
-menu_loop = 1
+menu_loop = 0
 game_loop = 1
+
+window_size = 450
+window = pygame.display.set_mode((window_size, window_size))
 
 while program_loop:
     #Display menu
@@ -27,9 +30,12 @@ while program_loop:
     #   display level
     #   Instantiate the character
     while game_loop:
-        pass
+        pygame.time.Clock().tick(30)
 
-    #Limit the number of frames per second so that the program will not take too much ressources
+        background = pygame.image.load("background.png").convert()
+        window.blit(background, (0, 0))
+        game_loop = 0
+        program_loop = 0
     #For every event
     #   If quit icon
     #       game_loop = 0
