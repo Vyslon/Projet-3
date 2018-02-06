@@ -28,13 +28,12 @@ class Level:
                 level_structure.append(line_level)
             self.structure = level_structure
 
-        for i in range (0, 3):
+        for i in range(0, 3):
             x, y = 0, 0
-            while (self.structure[y][x] != 'n') & ((y, x) != (
-                    self.items1
-                    or self.items2
-                    or self.items3)
-            ):
+            it1, it2, it3 = (), (), ()
+            while (self.structure[y][x] != 'n') and ((y, x) != self.items1
+                    and (y, x) != self.items2
+                    and (y, x) != self.items3):
                 y = random.randrange(0, len(self.structure)-1, 1)
                 x = random.randrange(0, len(self.structure)-1, 1)
             if i == 0:
@@ -43,7 +42,6 @@ class Level:
                 self.items2 = (y, x)
             elif i == 2:
                 self.items3 = (y, x)
-
 
 
     def display(self, window):

@@ -53,9 +53,7 @@ while program_loop:
     #   create level structure
     #   display level
     #   Instantiate the character
-    while game_loop:
-        pygame.time.Clock().tick(30)
-
+    if game_loop:
         background = pygame.image.load("background.jpg").convert()
         window.blit(background, (0, 0))
         pygame.display.flip()
@@ -64,6 +62,10 @@ while program_loop:
         lvl.generator()
         lvl.display(window)
         pygame.display.flip()
+
+    while game_loop:
+        pygame.time.Clock().tick(30)
+
         for event in pygame.event.get():
             if event.type == QUIT:
                 game_loop = 0
