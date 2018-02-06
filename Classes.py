@@ -27,7 +27,7 @@ class Level:
 
         for i in range (0,3):
             x, y = 0, 0
-            while (self.structure[y][x] != 'n') & (y,x) != (self.items[0] | self.items[1] | self.items[2]):
+            while (self.structure[y][x] != 'n') & ((y,x) != (self.items[0] | self.items[1] | self.items[2])):
                 y = random.randrange(0, len(self.structure)-1, 1)
                 x = random.randrange(0, len(self.structure)-1, 1)
             self.items[i] = (y,x)
