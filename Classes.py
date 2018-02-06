@@ -28,7 +28,6 @@ class Level:
         for i in range (0,3):
             x, y = 0, 0
             while (self.structure[y][x] != 'n') & (y,x) != (self.items[0] | self.items[1] | self.items[2]):
->>>>>>> d8a84b045000b05d31025c931025715bf63cdc15
                 y = random.randrange(0, len(self.structure)-1, 1)
                 x = random.randrange(0, len(self.structure)-1, 1)
             self.items[i] = (y,x)
