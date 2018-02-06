@@ -30,7 +30,6 @@ class Level:
 
         for i in range(0, 3):
             x, y = 0, 0
-            it1, it2, it3 = (), (), ()
             while (self.structure[y][x] != 'n') and ((y, x) != self.items1
                     and (y, x) != self.items2
                     and (y, x) != self.items3):
