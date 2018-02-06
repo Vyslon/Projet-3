@@ -9,7 +9,10 @@ class Level:
         """
         self.lvlConfigFile = file
         self.structure = 0
-        self.items = 0
+        self.items1 = ()
+        self.items2 = ()
+        self.items3 = ()
+
 
     def generator(self):
         """Generate structure and place items has random locations"""
@@ -27,10 +30,19 @@ class Level:
 
         for i in range (0, 3):
             x, y = 0, 0
-            while (self.structure[y][x] != 'n') & ((y, x) != (self.items[0] | self.items[1] | self.items[2])):
+            while (self.structure[y][x] != 'n') & ((y, x) != (
+                    self.items1
+                    or self.items2
+                    or self.items3)
+            ):
                 y = random.randrange(0, len(self.structure)-1, 1)
                 x = random.randrange(0, len(self.structure)-1, 1)
-            self.items[i] = (y, x)
+            if i == 0:
+                self.items1 = (y, x)
+            elif i == 1:
+                self.items2 = (y, x)
+            elif i == 2:
+                self.items3 = (y, x)
 
 
 
@@ -39,9 +51,9 @@ class Level:
         startingpointimage = pygame.image.load("start.png").convert()
         endingpointimage = pygame.image.load("end.png").convert_alpha()
         wallimage = pygame.image.load("wall.png").convert()
-        item1 = pygame.image.load("item1.png").convert_alpha()
-        item2 = pygame.image.load("item2.png").convert_alpha()
-        item3 = pygame.image.load("item3.png").convert_alpha()
+        item1 = pygame.image.load("item1.png").convert()
+        item2 = pygame.image.load("item2.png").convert()
+        item3 = pygame.image.load("item3.png").convert()
         y, x = 0, 0
 
         for line in self.structure:
@@ -53,11 +65,11 @@ class Level:
                     window.blit(wallimage,(x * 30,y * 30))
                 if character == 'e':
                     window.blit(endingpointimage, (x * 30,y * 30))
-                if (y, x) == self.items[0]:
+                if (y, x) == self.items1:
                     window.blit(item1, (x * 30, y * 30))
-                elif (y, x) == self.items[1]:
+                elif (y, x) == self.items2:
                     window.blit(item2, (x * 30, y * 30))
-                elif (y, x) == self.items[2]:
+                elif (y, x) == self.items3:
                     window.blit(item3, (x * 30, y * 30))
                 x += 1
             y += 1
