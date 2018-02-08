@@ -61,7 +61,7 @@ while program_loop:
         lvl = Level("level_config.txt")
         lvl.generator()
         lvl.display(window)
-        mg = Character()
+        mg = Character(lvl, window)
         window.blit(mg.mgimage, (mg.mgpos[0] * 30, mg.mgpos[1] * 30))
         pygame.display.flip()
 
@@ -76,6 +76,20 @@ while program_loop:
                 if event.key == K_ESCAPE:
                     game_loop = 0
                     menu_loop = 1
+
+                if event.key == K_LEFT:
+                    mg.move("left")
+                if event.key == K_RIGHT:
+                    mg.move("right")
+                if event.key == K_DOWN:
+                    mg.move("down")
+                if event.key == K_UP:
+                    mg.move("up")
+
+        window.blit(background, (0, 0))
+        lvl.display(window)
+        window.blit(mg.mgimage, (mg.mgpos[1] * 30, mg.mgpos[0] * 30))
+        pygame.display.flip()
 
 
     #For every event

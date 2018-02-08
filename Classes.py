@@ -3,15 +3,18 @@ import pygame
 from pygame.locals import *
 
 class Level:
+    structure = 0
     def __init__(self, file):
         """
         Initialize attributes of the class
         """
         self.lvlConfigFile = file
-        self.structure = 0
         self.items1 = ()
+        self.items1_up = 1
         self.items2 = ()
+        self.items2_up = 1
         self.items3 = ()
+        self.items3_up = 1
 
 
     def generator(self):
@@ -61,23 +64,95 @@ class Level:
                     window.blit(wallimage,(x * 30,y * 30))
                 if character == 'e':
                     window.blit(endingpointimage, (x * 30,y * 30))
-                if (y, x) == self.items1:
+                if ((y, x) == self.items1) and self.items1_up:
                     window.blit(item1, (x * 30, y * 30))
-                elif (y, x) == self.items2:
+                elif ((y, x) == self.items2) and self.items2_up:
                     window.blit(item2, (x * 30, y * 30))
-                elif (y, x) == self.items3:
+                elif ((y, x) == self.items3) and self.items3_up:
                     window.blit(item3, (x * 30, y * 30))
                 x += 1
             y += 1
 
 
 class Character:
-    def __init__(self):
+    def __init__(self, level, window):
         self.mgimage = pygame.image.load("macgyver.png").convert_alpha()
         self.mgpos = [0, 0]
         self.mgnbitemfound = 0
+        self.level = level
+        self.window = window
 
     def move(self, choice):
-        #Moving character in the desired direction (if possible)
-        pass
+        """Moving character in the desired direction (if possible)"""
+        if choice == "left":
+            hypot_pos = self.level.structure[self.mgpos[0]][self.mgpos[1] - 1]
+            if ((self.mgpos[1] - 1) >= 0):
+                if (hypot_pos) == 's':
+                    self.mgpos[1] = self.mgpos[1] - 1
+
+                if (hypot_pos) == 'e':
+                    self.mgpos[1] = self.mgpos[1] - 1
+
+                if (hypot_pos) == 'w':
+                    pass
+
+                if (hypot_pos) == 'n':
+                    self.mgpos[1] = self.mgpos[1] - 1
+            print("left")
+            print("({}, {})".format(self.mgpos[0], self.mgpos[1]))
+
+        if choice == "right":
+            hypot_pos = self.level.structure[self.mgpos[0]][self.mgpos[1] + 1]
+            if((self.mgpos[1] + 1) <= 14):
+                if (hypot_pos) == 's':
+                    self.mgpos[1] = self.mgpos[1] + 1
+                if (hypot_pos) == 'e':
+                    self.mgpos[1] = self.mgpos[1] + 1
+                if (hypot_pos) == 'w':
+                    print("wall")
+                if (hypot_pos) == 'n':
+                    self.mgpos[1] = self.mgpos[1] + 1
+            print("right")
+            print("({}, {})".format(self.mgpos[0], self.mgpos[1]))
+
+        if choice == "down":
+            hypot_pos = self.level.structure[self.mgpos[0] + 1][self.mgpos[1]]
+            if ((self.mgpos[0] + 1) <= 14):
+                if (hypot_pos) == 's':
+                    self.mgpos[0] = self.mgpos[0] + 1
+                if (hypot_pos) == 'e':
+                    self.mgpos[0] = self.mgpos[0] + 1
+                if (hypot_pos) == 'w':
+                    pass
+                if (hypot_pos) == 'n':
+                    self.mgpos[0] = self.mgpos[0] + 1
+            print("down")
+            print("({}, {})".format(self.mgpos[0], self.mgpos[1]))
+
+        if choice == "up":
+            hypot_pos = self.level.structure[self.mgpos[0] - 1][self.mgpos[1]]
+            if ((self.mgpos[0] - 1) >= 0):
+                if (hypot_pos) == 's':
+                    self.mgpos[0] = self.mgpos[0] - 1
+                if (hypot_pos) == 'e':
+                    self.mgpos[0] = self.mgpos[0] - 1
+                if (hypot_pos) == 'w':
+                    pass
+                if (hypot_pos) == 'n':
+                    self.mgpos[0] = self.mgpos[0] - 1
+            print("up")
+            print("({}, {})".format(self.mgpos[0], self.mgpos[1]))
+
+        if (self.mgpos[0], self.mgpos[1]) == self.level.items1:
+            self.level.items1_up = 0
+            self.mgnbitemfound += 1
+        elif (self.mgpos[0], self.mgpos[1]) == self.level.items2:
+            self.level.items2_up = 0
+            self.mgnbitemfound += 1
+        elif (self.mgpos[0], self.mgpos[1]) == self.level.items3:
+            self.level.items3_up = 0
+            self.mgnbitemfound += 1
+
+        self.window.blit(self.mgimage, (self.mgpos[0] * 30, self.mgpos[1] * 30))
+
 
