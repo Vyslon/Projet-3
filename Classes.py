@@ -85,8 +85,8 @@ class Character:
     def move(self, choice):
         """Moving character in the desired direction (if possible)"""
         if choice == "left":
-            hypot_pos = self.level.structure[self.mgpos[0]][self.mgpos[1] - 1]
             if ((self.mgpos[1] - 1) >= 0):
+                hypot_pos = self.level.structure[self.mgpos[0]][self.mgpos[1] - 1]
                 if (hypot_pos) == 's':
                     self.mgpos[1] = self.mgpos[1] - 1
 
@@ -102,8 +102,8 @@ class Character:
             print("({}, {})".format(self.mgpos[0], self.mgpos[1]))
 
         if choice == "right":
-            hypot_pos = self.level.structure[self.mgpos[0]][self.mgpos[1] + 1]
             if((self.mgpos[1] + 1) <= 14):
+                hypot_pos = self.level.structure[self.mgpos[0]][self.mgpos[1] + 1]
                 if (hypot_pos) == 's':
                     self.mgpos[1] = self.mgpos[1] + 1
                 if (hypot_pos) == 'e':
@@ -116,8 +116,8 @@ class Character:
             print("({}, {})".format(self.mgpos[0], self.mgpos[1]))
 
         if choice == "down":
-            hypot_pos = self.level.structure[self.mgpos[0] + 1][self.mgpos[1]]
             if ((self.mgpos[0] + 1) <= 14):
+                hypot_pos = self.level.structure[self.mgpos[0] + 1][self.mgpos[1]]
                 if (hypot_pos) == 's':
                     self.mgpos[0] = self.mgpos[0] + 1
                 if (hypot_pos) == 'e':
@@ -130,8 +130,8 @@ class Character:
             print("({}, {})".format(self.mgpos[0], self.mgpos[1]))
 
         if choice == "up":
-            hypot_pos = self.level.structure[self.mgpos[0] - 1][self.mgpos[1]]
             if ((self.mgpos[0] - 1) >= 0):
+                hypot_pos = self.level.structure[self.mgpos[0] - 1][self.mgpos[1]]
                 if (hypot_pos) == 's':
                     self.mgpos[0] = self.mgpos[0] - 1
                 if (hypot_pos) == 'e':
