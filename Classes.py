@@ -72,10 +72,10 @@ class Level:
 
 
 class Character:
-    def __init__(self):
-        #initiallize attributes
+    def __init__(self, test):
+        print(test)
         mgimage = pygame.image.load("macgyver.png").convert_alpha()
-        mgpos = []
+        mgpos = [0, 0]
         mgnbitemfound = 0
 
     def move(self, choice):
