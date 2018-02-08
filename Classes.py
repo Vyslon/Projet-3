@@ -74,7 +74,9 @@ class Level:
 class Character:
     def __init__(self):
         #initiallize attributes
-        pass
+        mgimage = pygame.image.load("macgyver.png").convert_alpha()
+        mgpos = []
+        mgnbitemfound = 0
 
     def move(self, choice):
         #Moving character in the desired direction (if possible)
