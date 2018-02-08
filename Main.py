@@ -61,7 +61,7 @@ while program_loop:
         lvl = Level("level_config.txt")
         lvl.generator()
         lvl.display(window)
-        mg = Character("test")
+        mg = Character()
         window.blit(mg.mgimage, (mg.mgpos[0] * 30, mg.mgpos[1] * 30))
         pygame.display.flip()
 
