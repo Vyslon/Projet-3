@@ -30,9 +30,9 @@ class Level:
 
         for i in range(0, 3):
             x, y = 0, 0
-            while (self.structure[y][x] != 'n') and ((y, x) != self.items1
-                    and (y, x) != self.items2
-                    and (y, x) != self.items3):
+            while ((self.structure[y][x] != 'n') or ((y, x) == self.items1
+                    or (y, x) == self.items2
+                    or (y, x) == self.items3)):
                 y = random.randrange(0, len(self.structure)-1, 1)
                 x = random.randrange(0, len(self.structure)-1, 1)
             if i == 0:
