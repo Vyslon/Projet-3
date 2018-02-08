@@ -23,7 +23,6 @@ class Level:
                 for character in line:
                     if character != '\n':
                         line_level.append(character)
-                        print(character)
 
                 level_structure.append(line_level)
             self.structure = level_structure
