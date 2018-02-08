@@ -15,6 +15,7 @@ class Level:
         self.items2_up = 1
         self.items3 = ()
         self.items3_up = 1
+        self.endpos = []
 
 
     def generator(self):
@@ -64,6 +65,7 @@ class Level:
                     window.blit(wallimage,(x * 30,y * 30))
                 if character == 'e':
                     window.blit(endingpointimage, (x * 30,y * 30))
+                    self.endpos = [y, x]
                 if ((y, x) == self.items1) and self.items1_up:
                     window.blit(item1, (x * 30, y * 30))
                 elif ((y, x) == self.items2) and self.items2_up:
@@ -75,12 +77,11 @@ class Level:
 
 
 class Character:
-    def __init__(self, level, window):
+    def __init__(self, level):
         self.mgimage = pygame.image.load("macgyver.png").convert_alpha()
         self.mgpos = [0, 0]
         self.mgnbitemfound = 0
         self.level = level
-        self.window = window
 
     def move(self, choice):
         """Moving character in the desired direction (if possible)"""
@@ -143,16 +144,14 @@ class Character:
             print("up")
             print("({}, {})".format(self.mgpos[0], self.mgpos[1]))
 
-        if (self.mgpos[0], self.mgpos[1]) == self.level.items1:
+        if (self.mgpos[0], self.mgpos[1]) == (self.level.items1[0], self.level.items1[1]):
             self.level.items1_up = 0
-            self.mgnbitemfound += 1
-        elif (self.mgpos[0], self.mgpos[1]) == self.level.items2:
+            self.mgnbitemfound = self.mgnbitemfound + 1
+        elif (self.mgpos[0], self.mgpos[1]) == (self.level.items2[0], self.level.items2[1]):
             self.level.items2_up = 0
-            self.mgnbitemfound += 1
-        elif (self.mgpos[0], self.mgpos[1]) == self.level.items3:
+            self.mgnbitemfound = self.mgnbitemfound + 1
+        elif (self.mgpos[0], self.mgpos[1]) == (self.level.items3[0], self.level.items3[1]):
             self.level.items3_up = 0
-            self.mgnbitemfound += 1
-
-        self.window.blit(self.mgimage, (self.mgpos[0] * 30, self.mgpos[1] * 30))
+            self.mgnbitemfound = self.mgnbitemfound + 1
 
 

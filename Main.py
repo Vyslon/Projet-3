@@ -61,7 +61,7 @@ while program_loop:
         lvl = Level("level_config.txt")
         lvl.generator()
         lvl.display(window)
-        mg = Character(lvl, window)
+        mg = Character(lvl)
         window.blit(mg.mgimage, (mg.mgpos[0] * 30, mg.mgpos[1] * 30))
         pygame.display.flip()
 
@@ -86,24 +86,15 @@ while program_loop:
                 if event.key == K_UP:
                     mg.move("up")
 
+        if (lvl.structure[mg.mgpos[0]][mg.mgpos[1]] == 'e') and (mg.mgnbitemfound == 3):
+            game_loop = 0
+            menu_loop = 1
+
         window.blit(background, (0, 0))
         lvl.display(window)
         window.blit(mg.mgimage, (mg.mgpos[1] * 30, mg.mgpos[0] * 30))
         pygame.display.flip()
 
-
-    #For every event
-    #   If quit icon
-    #       game_loop = 0
-    #       menu_loop = 0
-    #       program_loop = 0
-    #   If escape
-    #       game_loop = 0
-    #       menu_loop = 1
-    #   If arrow keys
-    #       character.move()
-    #Display character at new position
-    #Refresh screen
     #If character.pos == 'e' (end)
     #   game_loop = 0
     #   menu_loop = 1
