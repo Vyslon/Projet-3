@@ -2,8 +2,10 @@ import random
 import pygame
 from pygame.locals import *
 
+
 class Level:
     structure = 0
+
     def __init__(self, file):
         """
         Initialize attributes of the class
@@ -15,8 +17,7 @@ class Level:
         self.items2_up = 1
         self.items3 = ()
         self.items3_up = 1
-        self.endpos = []
-
+        self.end_pos = []
 
     def generator(self):
         """Generate structure and place items has random locations"""
@@ -45,12 +46,11 @@ class Level:
             elif i == 2:
                 self.items3 = (y, x)
 
-
     def display(self, window):
-        #Display items
-        startingpointimage = pygame.image.load("start.png").convert()
-        endingpointimage = pygame.image.load("end.png").convert_alpha()
-        wallimage = pygame.image.load("wall.png").convert()
+
+        starting_point_image = pygame.image.load("start.png").convert()
+        ending_point_image = pygame.image.load("end.png").convert_alpha()
+        wall_image = pygame.image.load("wall.png").convert()
         item1 = pygame.image.load("item1.png").convert()
         item2 = pygame.image.load("item2.png").convert()
         item3 = pygame.image.load("item3.png").convert()
@@ -60,12 +60,12 @@ class Level:
             x = 0
             for character in line:
                 if character == 's':
-                    window.blit(startingpointimage, (x * 30, y * 30))
+                    window.blit(starting_point_image, (x * 30, y * 30))
                 if character == 'w':
-                    window.blit(wallimage,(x * 30,y * 30))
+                    window.blit(wall_image,(x * 30, y * 30))
                 if character == 'e':
-                    window.blit(endingpointimage, (x * 30,y * 30))
-                    self.endpos = [y, x]
+                    window.blit(ending_point_image, (x * 30, y * 30))
+                    self.end_pos = [y, x]
                 if ((y, x) == self.items1) and self.items1_up:
                     window.blit(item1, (x * 30, y * 30))
                 elif ((y, x) == self.items2) and self.items2_up:
@@ -78,80 +78,80 @@ class Level:
 
 class Character:
     def __init__(self, level):
-        self.mgimage = pygame.image.load("macgyver.png").convert_alpha()
-        self.mgpos = [0, 0]
-        self.mgnbitemfound = 0
+        self.image = pygame.image.load("macgyver.png").convert_alpha()
+        self.pos = [0, 0]
+        self.nb_item_found = 0
         self.level = level
 
     def move(self, choice):
         """Moving character in the desired direction (if possible)"""
         if choice == "left":
-            if ((self.mgpos[1] - 1) >= 0):
-                hypot_pos = self.level.structure[self.mgpos[0]][self.mgpos[1] - 1]
-                if (hypot_pos) == 's':
-                    self.mgpos[1] = self.mgpos[1] - 1
+            if (self.pos[1] - 1) >= 0:
+                hypothetical_pos = self.level.structure[self.pos[0]][self.pos[1] - 1]
+                if hypothetical_pos == 's':
+                    self.pos[1] = self.pos[1] - 1
 
-                if (hypot_pos) == 'e':
-                    self.mgpos[1] = self.mgpos[1] - 1
+                if hypothetical_pos == 'e':
+                    self.pos[1] = self.pos[1] - 1
 
-                if (hypot_pos) == 'w':
+                if hypothetical_pos == 'w':
                     pass
 
-                if (hypot_pos) == 'n':
-                    self.mgpos[1] = self.mgpos[1] - 1
+                if hypothetical_pos == 'n':
+                    self.pos[1] = self.pos[1] - 1
             print("left")
-            print("({}, {})".format(self.mgpos[0], self.mgpos[1]))
+            print("({}, {})".format(self.pos[0], self.pos[1]))
 
         if choice == "right":
-            if((self.mgpos[1] + 1) <= 14):
-                hypot_pos = self.level.structure[self.mgpos[0]][self.mgpos[1] + 1]
-                if (hypot_pos) == 's':
-                    self.mgpos[1] = self.mgpos[1] + 1
-                if (hypot_pos) == 'e':
-                    self.mgpos[1] = self.mgpos[1] + 1
-                if (hypot_pos) == 'w':
+            if(self.pos[1] + 1) <= 14:
+                hypothetical_pos = self.level.structure[self.pos[0]][self.pos[1] + 1]
+                if hypothetical_pos == 's':
+                    self.pos[1] = self.pos[1] + 1
+                if hypothetical_pos == 'e':
+                    self.pos[1] = self.pos[1] + 1
+                if hypothetical_pos == 'w':
                     print("wall")
-                if (hypot_pos) == 'n':
-                    self.mgpos[1] = self.mgpos[1] + 1
+                if hypothetical_pos == 'n':
+                    self.pos[1] = self.pos[1] + 1
             print("right")
-            print("({}, {})".format(self.mgpos[0], self.mgpos[1]))
+            print("({}, {})".format(self.pos[0], self.pos[1]))
 
         if choice == "down":
-            if ((self.mgpos[0] + 1) <= 14):
-                hypot_pos = self.level.structure[self.mgpos[0] + 1][self.mgpos[1]]
-                if (hypot_pos) == 's':
-                    self.mgpos[0] = self.mgpos[0] + 1
-                if (hypot_pos) == 'e':
-                    self.mgpos[0] = self.mgpos[0] + 1
-                if (hypot_pos) == 'w':
+            if (self.pos[0] + 1) <= 14:
+                hypothetical_pos = self.level.structure[self.pos[0] + 1][self.pos[1]]
+                if hypothetical_pos == 's':
+                    self.pos[0] = self.pos[0] + 1
+                if hypothetical_pos == 'e':
+                    self.pos[0] = self.pos[0] + 1
+                if hypothetical_pos == 'w':
                     pass
-                if (hypot_pos) == 'n':
-                    self.mgpos[0] = self.mgpos[0] + 1
+                if hypothetical_pos == 'n':
+                    self.pos[0] = self.pos[0] + 1
             print("down")
-            print("({}, {})".format(self.mgpos[0], self.mgpos[1]))
+            print("({}, {})".format(self.pos[0], self.pos[1]))
 
         if choice == "up":
-            if ((self.mgpos[0] - 1) >= 0):
-                hypot_pos = self.level.structure[self.mgpos[0] - 1][self.mgpos[1]]
-                if (hypot_pos) == 's':
-                    self.mgpos[0] = self.mgpos[0] - 1
-                if (hypot_pos) == 'e':
-                    self.mgpos[0] = self.mgpos[0] - 1
-                if (hypot_pos) == 'w':
+            if (self.pos[0] - 1) >= 0:
+                hypothetical_pos = self.level.structure[self.pos[0] - 1][self.pos[1]]
+                if hypothetical_pos == 's':
+                    self.pos[0] = self.pos[0] - 1
+                if hypothetical_pos == 'e':
+                    self.pos[0] = self.pos[0] - 1
+                if hypothetical_pos == 'w':
                     pass
-                if (hypot_pos) == 'n':
-                    self.mgpos[0] = self.mgpos[0] - 1
+                if hypothetical_pos == 'n':
+                    self.pos[0] = self.pos[0] - 1
             print("up")
-            print("({}, {})".format(self.mgpos[0], self.mgpos[1]))
+            print("({}, {})".format(self.pos[0], self.pos[1]))
 
-        if (self.mgpos[0], self.mgpos[1]) == (self.level.items1[0], self.level.items1[1]):
+        if (self.pos[0], self.pos[1]) == (self.level.items1[0], self.level.items1[1]):
             self.level.items1_up = 0
-            self.mgnbitemfound = self.mgnbitemfound + 1
-        elif (self.mgpos[0], self.mgpos[1]) == (self.level.items2[0], self.level.items2[1]):
+            self.nb_item_found = self.nb_item_found + 1
+        elif (self.pos[0], self.pos[1]) == (self.level.items2[0], self.level.items2[1]):
             self.level.items2_up = 0
-            self.mgnbitemfound = self.mgnbitemfound + 1
-        elif (self.mgpos[0], self.mgpos[1]) == (self.level.items3[0], self.level.items3[1]):
+            self.nb_item_found = self.nb_item_found + 1
+        elif (self.pos[0], self.pos[1]) == (self.level.items3[0], self.level.items3[1]):
             self.level.items3_up = 0
-            self.mgnbitemfound = self.mgnbitemfound + 1
+            self.nb_item_found = self.nb_item_found + 1
 
 
