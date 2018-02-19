@@ -86,14 +86,57 @@ while program_loop:
                 if event.key == K_UP:
                     mg.move("up")
 
-        if (lvl.structure[mg.mgpos[0]][mg.mgpos[1]] == 'e') and (mg.mgnbitemfound == 3):
-            game_loop = 0
-            menu_loop = 1
+        if (lvl.structure[mg.mgpos[0]][mg.mgpos[1]] == 'e'):
+            if mg.mgnbitemfound == 3:
+                game_loop = 0
+                menu_loop = 1
+            else:
+                game_loop = 0
+                menu_loop = 1
 
         window.blit(background, (0, 0))
         lvl.display(window)
         window.blit(mg.mgimage, (mg.mgpos[1] * 30, mg.mgpos[0] * 30))
         pygame.display.flip()
+
+    if program_loop:
+        if (lvl.structure[mg.mgpos[0]][mg.mgpos[1]] == 'e') and (mg.mgnbitemfound == 3):
+            winning_loop = 1
+            while winning_loop:
+                pygame.time.Clock().tick(30)
+
+                backgroundwin = pygame.image.load("winning_screen.png").convert()
+                window.blit(backgroundwin, (0, 0))
+                pygame.display.flip()
+
+                for event in pygame.event.get():
+                    if event.type == QUIT or event.type == KEYDOWN and event.key == K_ESCAPE:
+                        winning_loop = 0
+                        menu_loop = 0
+                        program_loop = 0
+                    if event.type == KEYDOWN:
+                        if event.key == K_RETURN | K_KP_ENTER:
+                            winning_loop = 0
+
+        else:
+            losing_loop = 1
+            while losing_loop:
+                pygame.time.Clock().tick(30)
+
+                backgroundlose = pygame.image.load("losing_screen.png").convert()
+                window.blit(backgroundlose, (0, 0))
+                pygame.display.flip()
+
+                for event in pygame.event.get():
+                    if event.type == QUIT or event.type == KEYDOWN and event.key == K_ESCAPE:
+                        losing_loop = 0
+                        menu_loop = 0
+                        program_loop = 0
+                    if event.type == KEYDOWN:
+                        if event.key == K_RETURN | K_KP_ENTER:
+                            losing_loop = 0
+
+
 
     #If character.pos == 'e' (end)
     #   game_loop = 0
