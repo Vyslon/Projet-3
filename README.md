@@ -1,1 +1,11 @@
 # Projet-3
+
+Documentation :
+
+  CONFIGURATION DU NIVEAU DE JEU 
+
+  MENU
+
+  PARTIE
+
+  ECRAN DE FIN
