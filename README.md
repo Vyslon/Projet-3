@@ -27,7 +27,7 @@ Documentation :
     Clic sur la croix ou presser la touche Esc
     
    Commencer une partie :
-    Presser la touche Return ou Enter
+    Presser la touche Space Bar (Barre d'espace)
     
     
 
@@ -35,15 +35,15 @@ Documentation :
     Fermer le programme : 
       Clic sur la croix
       
-    Quitter la partie :
-      Presser la touche Esc
+   Quitter la partie :
+     Presser la touche Esc
       
-    Déplacer le personnage :
-      Presser les touches directionnelles (flèches)
+   Déplacer le personnage :
+     Presser les touches directionnelles (flèches)
 
   ECRAN DE FIN
     Fermer le programme :
       Clic sur la croix ou presser la touche Esc
       
-    Retourner au menu :
-      Presser la touche Enter ou la touche Return
+   Retourner au menu :
+      Presser la touche Space Bar (Barre d'espace)
