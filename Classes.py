@@ -51,9 +51,9 @@ class Level:
         starting_point_image = pygame.image.load("start.png").convert()
         ending_point_image = pygame.image.load("end.png").convert_alpha()
         wall_image = pygame.image.load("wall.png").convert()
-        item1 = pygame.image.load("item1.png").convert()
-        item2 = pygame.image.load("item2.png").convert()
-        item3 = pygame.image.load("item3.png").convert()
+        item1 = pygame.image.load("item1.png").convert_alpha()
+        item2 = pygame.image.load("item2.png").convert_alpha()
+        item3 = pygame.image.load("item3.png").convert_alpha()
         y, x = 0, 0
 
         for line in self.structure:
@@ -153,5 +153,3 @@ class Character:
         elif (self.pos[0], self.pos[1]) == (self.level.items3[0], self.level.items3[1]):
             self.level.items3_up = 0
             self.nb_item_found = self.nb_item_found + 1
-
-
