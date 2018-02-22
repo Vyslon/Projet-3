@@ -27,7 +27,7 @@ while program_loop:
                 menu_loop = 0
                 program_loop = 0
             if event.type == KEYDOWN:
-                if event.key == K_RETURN | K_KP_ENTER:
+                if event.key == K_SPACE:
                     menu_loop = 0
                     game_loop = 1
 
@@ -93,7 +93,7 @@ while program_loop:
                         menu_loop = 0
                         program_loop = 0
                     if event.type == KEYDOWN:
-                        if event.key == K_RETURN | K_KP_ENTER:
+                        if event.key == K_SPACE:
                             winning_loop = 0
 
         else:
@@ -111,6 +111,5 @@ while program_loop:
                         menu_loop = 0
                         program_loop = 0
                     if event.type == KEYDOWN:
-                        if event.key == K_RETURN | K_KP_ENTER:
+                        if event.key == K_SPACE:
                             losing_loop = 0
-
