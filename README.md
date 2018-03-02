@@ -5,6 +5,7 @@ Documentation :
   CONFIGURATION DU NIVEAU DE JEU 
     
    Pour changer la configuration du niveau de jeu (l'emplacement de chaque élément type mur, arrivée, etc ...), il faut modifier le          fichier level_config.txt, le niveau de jeu doit toujours contenir 15 lignes de 15 caractères.
+     Attention ! Vous ne devez pas implémenter des zones inaccessibles car les objets pourraient y être générer et vous ne pourriez pas      gagner la partie.
    
    Il existe 4 type d'élément :
    
