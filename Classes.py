@@ -120,7 +120,8 @@ class Character:
 
         if choice == "down":
             if (self.pos[0] + 1) <= 14:
-                hypothetical_pos = self.level.structure[self.pos[0] + 1][self.pos[1]]
+                hypothetical_pos = self.level.structure[self.pos[0] + 1
+                                                        ][self.pos[1]]
                 if hypothetical_pos == 's':
                     self.pos[0] = self.pos[0] + 1
                 if hypothetical_pos == 'e':
@@ -134,7 +135,8 @@ class Character:
 
         if choice == "up":
             if (self.pos[0] - 1) >= 0:
-                hypothetical_pos = self.level.structure[self.pos[0] - 1][self.pos[1]]
+                hypothetical_pos = self.level.structure[self.pos[0] - 1
+                                                        ][self.pos[1]]
                 if hypothetical_pos == 's':
                     self.pos[0] = self.pos[0] - 1
                 if hypothetical_pos == 'e':
@@ -147,17 +149,20 @@ class Character:
             print("({}, {})".format(self.pos[0], self.pos[1]))
 
         if (self.pos[0], self.pos[1]) == (self.level.items1[0],
-                                          self.level.items1[1]) and (self.level.items1_up == 1):
+                                          self.level.items1[1]) and
+                                                (self.level.items1_up == 1):
             self.level.items1_up = 0
             self.nb_item_found = self.nb_item_found + 1
             print("item 1 ramasser")
             print("Nombre d'items ramasser : {}".format(self.nb_item_found))
-        elif (self.pos[0], self.pos[1]) == (self.level.items2[0], self.level.items2[1]) and (self.level.items2_up == 1):
+        elif (self.pos[0], self.pos[1]) == (self.level.items2[0], self.level.items2[1])
+                                        and (self.level.items2_up == 1):
             self.level.items2_up = 0
             self.nb_item_found = self.nb_item_found + 1
             print("item 2 ramasser")
             print("Nombre d'items ramasser : {}".format(self.nb_item_found))
-        elif (self.pos[0], self.pos[1]) == (self.level.items3[0], self.level.items3[1]) and (self.level.items3_up == 1):
+        elif (self.pos[0], self.pos[1]) == (self.level.items3[0], self.level.items3[1]) 
+                                        and (self.level.items3_up == 1):
             self.level.items3_up = 0
             self.nb_item_found = self.nb_item_found + 1
             print("item 3 ramasser")
