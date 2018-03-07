@@ -46,7 +46,7 @@ class Level:
                 self.items3 = (y, x)
 
     def display(self, window):
-
+        """Display structure and items at their places"""
         starting_point_image = pygame.image.load("start.png").convert()
         ending_point_image = pygame.image.load("end.png").convert_alpha()
         wall_image = pygame.image.load("wall.png").convert()
@@ -77,6 +77,7 @@ class Level:
 
 class Character:
     def __init__(self, level):
+        """Initialize attributes of the class"""
         self.image = pygame.image.load("macgyver.png").convert_alpha()
         self.pos = [0, 0]
         self.nb_item_found = 0
