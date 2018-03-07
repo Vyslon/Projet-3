@@ -78,12 +78,14 @@ while program_loop:
         pygame.display.flip()
 
     if program_loop:
-        if (lvl.structure[mg.pos[0]][mg.pos[1]] == 'e') and (mg.nb_item_found == 3):
+        if (lvl.structure[mg.pos[0]][mg.pos[1]]
+                == 'e') and (mg.nb_item_found == 3):
             winning_loop = 1
             while winning_loop:
                 pygame.time.Clock().tick(30)
 
-                background_win = pygame.image.load("winning_screen.png").convert()
+                background_win = pygame.image.load(
+                    "winning_screen.png").convert()
                 window.blit(background_win, (0, 0))
                 pygame.display.flip()
 
@@ -101,7 +103,8 @@ while program_loop:
             while losing_loop:
                 pygame.time.Clock().tick(30)
 
-                background_lose = pygame.image.load("losing_screen.png").convert()
+                background_lose = pygame.image.load(
+                    "losing_screen.png").convert()
                 window.blit(background_lose, (0, 0))
                 pygame.display.flip()
 
