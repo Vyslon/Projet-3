@@ -23,7 +23,8 @@ while program_loop:
         pygame.display.flip()
 
         for event in pygame.event.get():
-            if event.type == QUIT or event.type == KEYDOWN and event.key == K_ESCAPE:
+            if event.type == QUIT or event.type == KEYDOWN and \
+                                    event.key == K_ESCAPE:
                 menu_loop = 0
                 program_loop = 0
             if event.type == KEYDOWN:
@@ -78,8 +79,8 @@ while program_loop:
         pygame.display.flip()
 
     if program_loop:
-        if (lvl.structure[mg.pos[0]][mg.pos[1]]
-                == 'e') and (mg.nb_item_found == 3):
+        if (lvl.structure[mg.pos[0]][mg.pos[1]] == 'e') \
+                and (mg.nb_item_found == 3):
             winning_loop = 1
             while winning_loop:
                 pygame.time.Clock().tick(30)
@@ -90,7 +91,8 @@ while program_loop:
                 pygame.display.flip()
 
                 for event in pygame.event.get():
-                    if event.type == QUIT or event.type == KEYDOWN and event.key == K_ESCAPE:
+                    if event.type == QUIT or event.type == KEYDOWN and \
+                                             event.key == K_ESCAPE:
                         winning_loop = 0
                         menu_loop = 0
                         program_loop = 0
@@ -109,7 +111,8 @@ while program_loop:
                 pygame.display.flip()
 
                 for event in pygame.event.get():
-                    if event.type == QUIT or event.type == KEYDOWN and event.key == K_ESCAPE:
+                    if event.type == QUIT or event.type == KEYDOWN and \
+                                                event.key == K_ESCAPE:
                         losing_loop = 0
                         menu_loop = 0
                         program_loop = 0
